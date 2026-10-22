@@ -16,13 +16,13 @@ concurrency:
 jobs:
   quality:
     name: Format, test, lint, and build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Set up Java
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "21"
@@ -31,7 +31,7 @@ jobs:
       - name: Run quality gate
         run: ./scripts/quality.sh
       - name: Upload debug APK
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: jiwoo-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
@@ -39,13 +39,13 @@ jobs:
   android-journey:
     name: Emulator user journey
     needs: quality
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Set up Java
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "21"
@@ -66,3 +66,11 @@ jobs:
           profile: pixel_6
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest
+      - name: Upload Android test report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: jiwoo-android-test-report
+          path: |
+            app/build/reports/androidTests/connected/debug
+            app/build/outputs/androidTest-results/connected/debug
