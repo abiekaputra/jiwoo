@@ -1,0 +1,30 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Jiwoo stethoscope J monogram</title>
+  <desc id="description">
+    A balanced stethoscope yoke continuing into a J-shaped tube and quiet spark.
+  </desc>
+
+  <rect width="512" height="512" rx="128" fill="#332D7D" />
+  <path
+    d="M176 116V164C176 218 214 246 256 246C298 246 336 218 336 164V116M256 246V296C256 366 164 390 126 330"
+    stroke="#FFFFFF"
+    stroke-width="30"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M126 330L98 316M112 350L82 360M132 306L122 278"
+    stroke="#FF7067"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+  <circle cx="126" cy="330" r="13" fill="#FF7067" />
+</svg>
