@@ -1,6 +1,7 @@
 package dev.abiekaputra.jiwoo
 
 import android.database.sqlite.SQLiteDatabase
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -8,6 +9,7 @@ import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.test.performTextReplacement
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -55,7 +57,7 @@ class JiwooJourneyTest {
         capture("04-today-saved")
         seedHistory()
 
-        composeRule.onNodeWithTag("nav-journal").performClick()
+        composeRule.onNodeWithTag("nav-journal").performSemanticsAction(SemanticsActions.OnClick)
         waitForTag("journal-screen")
         composeRule.waitForIdle()
         capture("05-journal")
@@ -66,12 +68,12 @@ class JiwooJourneyTest {
         capture("06-reflection-detail")
         composeRule.onNodeWithText("Close").performClick()
 
-        composeRule.onNodeWithTag("nav-insights").performClick()
+        composeRule.onNodeWithTag("nav-insights").performSemanticsAction(SemanticsActions.OnClick)
         waitForTag("insights-screen")
         composeRule.onNodeWithText("Recent rhythm").assertIsDisplayed()
         capture("07-insights")
 
-        composeRule.onNodeWithTag("nav-settings").performClick()
+        composeRule.onNodeWithTag("nav-settings").performSemanticsAction(SemanticsActions.OnClick)
         waitForTag("settings-screen")
         capture("08-settings")
 
