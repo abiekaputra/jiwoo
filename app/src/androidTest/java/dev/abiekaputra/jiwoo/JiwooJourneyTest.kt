@@ -1,13 +1,16 @@
 package dev.abiekaputra.jiwoo
 
 import android.database.sqlite.SQLiteDatabase
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.test.performTextReplacement
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -53,8 +56,11 @@ class JiwooJourneyTest {
         waitForTag("today-screen")
         composeRule.onNodeWithText("Latest reflection").assertIsDisplayed()
         capture("04-today-saved")
+        waitForTextToDisappear("Reflection saved privately.")
 
-        composeRule.onNodeWithTag("open-journal-button").performClick()
+        composeRule
+            .onNodeWithTag("open-journal-button")
+            .performSemanticsAction(SemanticsActions.OnClick)
         waitForTag("journal-screen")
         seedHistory()
         composeRule.waitForIdle()
@@ -145,5 +151,11 @@ class JiwooJourneyTest {
             composeRule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
         }
         composeRule.onNodeWithTag(tag).assertIsDisplayed()
+    }
+
+    private fun waitForTextToDisappear(text: String) {
+        composeRule.waitUntil(timeoutMillis = 15_000) {
+            composeRule.onAllNodesWithText(text).fetchSemanticsNodes().isEmpty()
+        }
     }
 }
