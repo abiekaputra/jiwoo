@@ -84,7 +84,10 @@ fun TodayScreen(entries: List<CheckIn>, onNewReflection: () -> Unit, onOpenJourn
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text("Latest reflection", style = MaterialTheme.typography.titleLarge)
-                    OutlinedButton(onClick = onOpenJournal) {
+                    OutlinedButton(
+                        onClick = onOpenJournal,
+                        modifier = Modifier.testTag("open-journal-button"),
+                    ) {
                         Text("Journal")
                         Icon(Icons.AutoMirrored.Outlined.ArrowForward, contentDescription = null)
                     }
