@@ -53,10 +53,10 @@ class JiwooJourneyTest {
         waitForTag("today-screen")
         composeRule.onNodeWithText("Latest reflection").assertIsDisplayed()
         capture("04-today-saved")
-        seedHistory()
 
         composeRule.onNodeWithTag("open-journal-button").performClick()
         waitForTag("journal-screen")
+        seedHistory()
         composeRule.waitForIdle()
         capture("05-journal")
         composeRule
