@@ -1,7 +1,7 @@
 # Jiwoo
 
 <p align="center">
-  <img src="docs/jiwoo-mark.svg" alt="Jiwoo logo" width="112" />
+  <img src="docs/jiwoo-lockup.png" alt="Jiwoo" width="520" />
 </p>
 
 <p align="center">

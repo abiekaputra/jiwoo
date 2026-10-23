@@ -20,7 +20,7 @@ class ReflectionReminderWorker(
         }
         val notification =
             NotificationCompat.Builder(applicationContext, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_jiwoo_foreground)
+                .setSmallIcon(R.drawable.ic_jiwoo_notification)
                 .setContentTitle(applicationContext.getString(R.string.reminder_title))
                 .setContentText(applicationContext.getString(R.string.reminder_body))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

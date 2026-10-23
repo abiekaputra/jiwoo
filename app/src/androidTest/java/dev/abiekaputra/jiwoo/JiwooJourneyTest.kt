@@ -141,7 +141,9 @@ class JiwooJourneyTest {
     private fun capture(name: String) {
         composeRule.waitForIdle()
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val directory = File(context.getExternalFilesDir(null), "screenshots").apply(File::mkdirs)
+        val evidenceRoot =
+            context.externalMediaDirs.firstOrNull() ?: context.getExternalFilesDir(null)
+        val directory = File(evidenceRoot, "screenshots").apply(File::mkdirs)
         UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
             .takeScreenshot(File(directory, "$name.png"))
     }

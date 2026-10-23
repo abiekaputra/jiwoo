@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="jiwoo_indigo">#332D7D</color>
+    <color name="jiwoo_icon_background">#FAF9FF</color>
 </resources>

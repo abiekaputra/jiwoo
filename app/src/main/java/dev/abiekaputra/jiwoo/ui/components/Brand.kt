@@ -23,20 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.abiekaputra.jiwoo.R
 import dev.abiekaputra.jiwoo.ui.theme.JiwooCoral
-import dev.abiekaputra.jiwoo.ui.theme.JiwooIndigo
 
 @Composable
 fun JiwooMark(modifier: Modifier = Modifier, size: Int = 64) {
-    Box(
-        modifier = modifier.size(size.dp).background(JiwooIndigo, CircleShape),
-        contentAlignment = Alignment.Center,
-    ) {
-        Image(
-            painter = painterResource(R.drawable.ic_jiwoo_foreground),
-            contentDescription = "Jiwoo private reflection mark",
-            modifier = Modifier.size((size * 0.82f).dp),
-        )
-    }
+    Image(
+        painter = painterResource(R.drawable.jiwoo_mark),
+        contentDescription = "Jiwoo private reflection mark",
+        modifier = modifier.size(size.dp),
+    )
 }
 
 @Composable
